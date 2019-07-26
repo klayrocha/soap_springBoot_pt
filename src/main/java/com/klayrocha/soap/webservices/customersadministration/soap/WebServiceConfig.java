@@ -43,8 +43,6 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		definition.setTargetNamespace("http://klayrocha.com.br");
 		definition.setLocationUri("/ws");
 		definition.setSchema(customerSchema);
-		definition.setRequestSuffix("Requisicao");
-		definition.setResponseSuffix("Responsa");
 		return definition;
 	}
 
