@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="dde81fcc-7075-45d3-b736-81538660ba33" activeEnvironment="Default" name="Customers" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b7f697ef-a691-4d16-b7b9-86ef79d9bb99" wsaVersion="NONE" name="CustomerPortSoap11" type="wsdl" bindingName="{http://klayrocha.com.br}CustomerPortSoap11" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/ws/customers.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/ws/customers.wsdl"><con:part><con:url>http://localhost:8080/ws/customers.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://klayrocha.com.br" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://klayrocha.com.br" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://klayrocha.com.br">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://klayrocha.com.br" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="InsertCustomerRequisicao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CustomerDetail" type="tns:CustomerDetail"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="InsertCustomerResposta">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="tns:Status"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerDetailRequisicao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCustomerDetailResposta">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="CustomerDetail" type="tns:CustomerDetail"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllCustomerDetailRequisicao">
+        <xs:complexType></xs:complexType>
+      </xs:element>
+      <xs:element name="GetAllCustomerDetailResposta">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="CustomerDetail" type="tns:CustomerDetail"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomerRequisicao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCustomerResposta">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="status" type="tns:Status"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:simpleType name="Status">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUCCESS"/>
+          <xs:enumeration value="FAILURE"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="CustomerDetail">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="name" type="xs:string"/>
+          <xs:element name="phone" type="xs:string"/>
+          <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCustomerDetailRequisicao">
+    <wsdl:part element="tns:GetCustomerDetailRequisicao" name="GetCustomerDetailRequisicao"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerDetailRequisicao">
+    <wsdl:part element="tns:GetAllCustomerDetailRequisicao" name="GetAllCustomerDetailRequisicao"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerRequisicao">
+    <wsdl:part element="tns:DeleteCustomerRequisicao" name="DeleteCustomerRequisicao"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InsertCustomerRequisicao">
+    <wsdl:part element="tns:InsertCustomerRequisicao" name="InsertCustomerRequisicao"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CustomerPort">
+    <wsdl:operation name="GetCustomerDetail">
+      <wsdl:input message="tns:GetCustomerDetailRequisicao" name="GetCustomerDetailRequisicao"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomerDetail">
+      <wsdl:input message="tns:GetAllCustomerDetailRequisicao" name="GetAllCustomerDetailRequisicao"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <wsdl:input message="tns:DeleteCustomerRequisicao" name="DeleteCustomerRequisicao"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomer">
+      <wsdl:input message="tns:InsertCustomerRequisicao" name="InsertCustomerRequisicao"></wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerPortSoap11" type="tns:CustomerPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetCustomerDetail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetCustomerDetailRequisicao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomerDetail">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="GetAllCustomerDetailRequisicao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteCustomerRequisicao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCustomer">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="InsertCustomerRequisicao">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerPortService">
+    <wsdl:port binding="tns:CustomerPortSoap11" name="CustomerPortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/ws</con:endpoint></con:endpoints><con:operation id="d38714be-be8c-4e5e-a928-ef688ee98945" isOneWay="false" action="" name="DeleteCustomer" bindingOperationName="DeleteCustomer" type="One-Way" inputName="DeleteCustomerRequisicao" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="12e93684-dcc8-4a94-91df-f266a8dd4cdd" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:klay="http://klayrocha.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <klay:DeleteCustomerRequisicao>
+         <klay:id>?</klay:id>
+      </klay:DeleteCustomerRequisicao>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://klayrocha.com.br/CustomerPort/DeleteCustomerRequisicao"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="48338bbb-4488-4bb0-a9d3-6f4eaa95822e" isOneWay="false" action="" name="GetAllCustomerDetail" bindingOperationName="GetAllCustomerDetail" type="One-Way" inputName="GetAllCustomerDetailRequisicao" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f10a98ec-f7fe-4dd2-ada4-a2a9dfb89d32" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:klay="http://klayrocha.com.br">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <klay:GetAllCustomerDetailRequisicao/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://klayrocha.com.br/CustomerPort/GetAllCustomerDetailRequisicao"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="ce15e3d1-bc61-48ec-bbc2-4aef9f80442d" isOneWay="false" action="" name="GetCustomerDetail" bindingOperationName="GetCustomerDetail" type="One-Way" inputName="GetCustomerDetailRequisicao" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="656a5581-58c9-4fe7-b2db-16a991cf8099" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+	xmlns:klay="http://klayrocha.com.br">
+    <soapenv:Header>
+   	<wsse:Security 
+   	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wsssecurity-secext-1.0.xsd"
+   	mustUnderstand="1">
+   		<wsse:UsernameToken>
+   			<wsse:Username>klay</wsse:Username>
+   			<wsse:Password>123</wsse:Password>
+   		</wsse:UsernameToken>
+   	</wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <klay:GetCustomerDetailRequisicao>
+         <klay:id>1</klay:id>
+      </klay:GetCustomerDetailRequisicao>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://klayrocha.com.br/CustomerPort/GetCustomerDetailRequisicao"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1fbd58dd-7f9c-41f1-9a18-e4465a7c4c1b" isOneWay="false" action="" name="InsertCustomer" bindingOperationName="InsertCustomer" type="One-Way" inputName="InsertCustomerRequisicao" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e42348b6-ec0f-4ea0-8dad-c403bc2c808c" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/ws</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+			   xmlns:klay="http://klayrocha.com.br">
+   <soapenv:Header>
+   	<wsse:Security 
+   	xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+   	mustUnderstand="1">
+   		<wsse:UsernameToken>
+   			<wsse:Username>klay</wsse:Username>
+   			<wsse:Password>123</wsse:Password>
+   		</wsse:UsernameToken>
+   	</wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <klay:InsertCustomerRequisicao>
+         <klay:CustomerDetail>
+            <klay:id>1</klay:id>
+            <klay:name>Klay Rocha</klay:name>
+            <klay:phone>9999</klay:phone>
+            <klay:email>klayrocha@gmail.com</klay:email>
+         </klay:CustomerDetail>
+      </klay:InsertCustomerRequisicao>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://klayrocha.com.br/CustomerPort/InsertCustomerRequisicao"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
